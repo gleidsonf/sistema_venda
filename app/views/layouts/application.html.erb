@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carina</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' %>
+
+  </head>
+
+  <body class="skin-blue sidebar-mini wysihtml5-supported">
+    <div class="wrapper">
+        <!--navbar  -->
+      <%= render 'layouts/main_header' %>
+        <!-- end navbar -->
+        <!-- sidebar -->
+      <%= render 'layouts/sidebar' %>
+        <!-- end sidebar -->
+        <!-- container -->
+        <div class="content-wrapper">
+          <%= render 'layouts/content_header', title_header: "Painel de controle", path: ["Home", "Dashboard"] %>
+          <section class="content">
+          <% if flash[:alert] %>
+            <div class="alert alert-success"><%= flash[:alert] %></div>
+          <% end %>
+            <%= yield %>            
+          </section>
+            
+        </div>
+        <!-- end container -->
+
+    </div>
+
+<!--     <div class="container"></div> -->
+  </body>
+</html>

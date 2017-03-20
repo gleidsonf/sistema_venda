@@ -1,0 +1,88 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Venda: <%= current_sale.id %></h3>
+	</div>
+
+	<div class="panel-body">
+		<%= form_for @sale_item, remote: true do |f| %>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<%= f.label :product_id %>
+					<%= f.number_field :product_id, class: "form-control", autofocus: true %>
+				</div>
+				<div class="form-group col-md-3">
+					<%= f.label :quantity %>
+					<%= f.number_field :quantity, min:1, value: 1, class: "form-control" %>
+				</div>
+				<div class="form-group col-md-3">
+					<%= f.label "Ação" %>
+					<%= f.submit "Adicionar", class: "btn btn-success form-control" %>
+				</div>
+			</div>
+		<% end %>
+
+	      <div class="form-group">
+		      	<%= label_tag "Produtos" %>
+		      	<select id="select_products">
+		      		<option disabled="true">Produto</option>
+		      		<% Product.all.each do |product| %>
+		      		<option value="#{product.id}"><%= product.name %></option>
+		      		<% end %>
+		      	</select>
+		      	<!-- < select_tag :product, options_from_collection_for_select(Product.all, :id, :name), class: "form-control", id: "select_products" %> -->
+		      </div>
+
+		<!-- Large modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#search_price">Pesquisar Preço</button>
+
+		<div id="search_price" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Pesquisar preço</h4>
+		      </div>
+		      <div class="modal-body">
+
+
+		        <p>One fine body&hellip;</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+		<h4 class="cart-text"><%= render 'sales/items' %></h4>
+
+
+		<%= form_for @sale do |f| %>
+		<div class="form-group">
+			<%= f.label :payment %>
+			<%= f.select :payment, options_from_collection_for_select(Payment.all, :id, :name), class: "form-control" %>	
+		</div>
+
+		<div class="form-group">
+			 <!-- f.number_field :payment_recieve, step: :any, class: "form-control" %> -->
+		</div>
+			<%= f.submit "Finalizar", class: "btn btn-success" %>	
+		<% end %>
+
+		<form>
+			<div class="form-group">
+				<%= label_tag :payment %>
+				<%= select_tag :payment, options_from_collection_for_select(Payment.all, :id, :name) %>
+			</div>
+
+		</form>
+
+
+		<h1>TODO: Modal with steps/stages</h1>
+		https://github.com/ngzhian/multi-step-modal
+		https://github.com/orige/jquery-bootstrap-modal-steps
+
+	</div>
+</div>

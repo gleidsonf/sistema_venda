@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h3><%= Sale.sale_last_week.count %></h3>
+<!--           <h3>53<sup style="font-size: 20px">%</sup></h3> -->
+
+          <p>Semana passada</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-calendar"></i>
+        </div>
+        <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+   	<div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3><%= Sale.sale_today.count %></h3>
+<!--           <h3>53<sup style="font-size: 20px">%</sup></h3> -->
+
+          <p>Hoje</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-shopping-bag"></i>
+        </div>
+        <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+</div>

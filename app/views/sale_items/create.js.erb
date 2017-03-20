@@ -1,0 +1,9 @@
+<% if @sale.errors.any? || @sale_item.errors.any? %>
+	alert("not valid.")
+<% else %>
+	// alert("valid.")
+	$('#sale_item_product_id').val('')
+	$('#sale_item_quantity').val('1')
+  $(".cart-text").html("<%= escape_javascript(render 'sales/items') %>")
+
+<% end %>
